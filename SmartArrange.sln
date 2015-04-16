@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartArrangeV3.5", "SmartArrangeV3.5\SmartArrangeV3.5.csproj", "{A045DA5F-D38B-49AD-B351-9D46F106D373}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartArrange", "SmartArrange\SmartArrange.csproj", "{A045DA5F-D38B-49AD-B351-9D46F106D373}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
