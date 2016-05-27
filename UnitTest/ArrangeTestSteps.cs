@@ -5,7 +5,6 @@
     using IcerSystem.FileArrange;
     using NUnit.Framework;
     using TechTalk.SpecFlow;
-    using TechTalk.SpecFlow.Assist;
 
     [Binding]
     public class ArrangeTestSteps
@@ -23,7 +22,6 @@
             var files = table.Rows.Select(_ => _["Filename"]).ToArray();
             var output = CommonStringExtension.GetCommonSubstring(files);
             ScenarioContext.Current.Set(output, "ArrangeResult");
-
         }
 
         [Then(@"the result should be `(.*)`")]
@@ -32,6 +30,5 @@
             var output = ScenarioContext.Current.Get<string>("ArrangeResult");
             Assert.AreEqual(path, output);
         }
-
     }
 }
