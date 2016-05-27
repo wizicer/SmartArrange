@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IcerSystem.FileArrange
+﻿namespace IcerSystem.FileArrange
 {
+    using System;
+    using System.Collections.Generic;
+
     internal static class CommonStringExtension
     {
         public static string GetCommonSubstring(string[] array)
@@ -16,6 +15,7 @@ namespace IcerSystem.FileArrange
                     str.Add(new KeyValuePair<int, string>(i, array[i].Substring(j)));
                 }
             }
+
             str.Sort(FuncCompare);
 
             string finalString = string.Empty;
@@ -34,6 +34,7 @@ namespace IcerSystem.FileArrange
                         count++;
                     }
                 }
+
                 if (count == array.Length)
                 {
                     string result = GetCommonString(continueStrs.ToArray());
@@ -43,6 +44,7 @@ namespace IcerSystem.FileArrange
                     }
                 }
             }
+
             return finalString;
         }
 
@@ -53,6 +55,7 @@ namespace IcerSystem.FileArrange
             {
                 if (strs[i].Length < len) len = strs[i].Length;
             }
+
             for (int i = 0; i < len; i++)
             {
                 bool flag = true;
@@ -64,8 +67,10 @@ namespace IcerSystem.FileArrange
                         break;
                     }
                 }
+
                 if (!flag) return strs[0].Substring(0, i);
             }
+
             return strs[0].Substring(0, len);
         }
 

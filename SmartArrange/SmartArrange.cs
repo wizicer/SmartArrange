@@ -1,44 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using System.Linq;
-
-namespace IcerSystem.FileArrange
+﻿namespace IcerSystem.FileArrange
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.IO.Abstractions;
+    using System.Linq;
+
     internal class SmartArrange
     {
-        public SmartArrange()
-        {
+        private readonly IFileSystem fileSystem;
 
+        public SmartArrange(IFileSystem fileSystem)
+        {
+            this.fileSystem = fileSystem;
         }
 
-        internal static string Arrange(string[] fileNames)
+        public SmartArrange()
+            : this(new FileSystem())
         {
-            //List<string> names = new List<string>();
+        }
+
+        internal void Arrange(string[] fileNames)
+        {
             List<FileSystemInfo> lst = new List<FileSystemInfo>();
             DirectoryInfo parentDir = null;
             for (int i = 0; i < fileNames.Length; i++)
             {
+                var filename = fileNames[i];
                 DirectoryInfo tmpParentDir = null;
-                if (File.Exists(fileNames[i]))
+                if (this.fileSystem.File.Exists(filename))
                 {
-                    FileInfo fi = new FileInfo(fileNames[i]);
+                    FileInfo fi = new FileInfo(filename);
                     lst.Add(fi);
                     tmpParentDir = fi.Directory;
-                    //names.Add(fi.Name);
                 }
-                else if (Directory.Exists(fileNames[i]))
+                else if (this.fileSystem.Directory.Exists(filename))
                 {
-                    DirectoryInfo di = new DirectoryInfo(fileNames[i]);
+                    DirectoryInfo di = new DirectoryInfo(filename);
                     lst.Add(di);
                     tmpParentDir = di.Parent;
-                    //names.Add(di.Name);
                 }
                 else
                 {
-                    return "ERROR: 文件类型不正确！";
+                    throw new FileNotFoundException("file or directory not found.", filename);
                 }
+
                 if (parentDir == null)
                 {
                     parentDir = tmpParentDir;
@@ -47,17 +53,17 @@ namespace IcerSystem.FileArrange
                 {
                     if (parentDir.FullName != tmpParentDir.FullName)
                     {
-                        return "ERROR: 暂不能处理非同一主目录的情况！";
+                        throw new NotSupportedException("all files or folder must be in one same parent folder.");
                     }
                 }
             }
-            //string commonStr = CommonStringExtension.GetCommonSubstring(names.ToArray());           
+
             string commonStr = CommonStringExtension.GetCommonSubstring(lst.Select(fsi => fsi.Name.Remove(fsi.Name.Length - fsi.Extension.Length)).ToArray());
             if (string.IsNullOrEmpty(commonStr))
             {
                 string newFolderName = "New Folder";
                 var count = 0;
-                while (Directory.Exists(parentDir.FullName + "\\" + newFolderName))
+                while (this.fileSystem.Directory.Exists(parentDir.FullName + "\\" + newFolderName))
                     newFolderName = "New Folder" + (count++).ToString();
                 commonStr = newFolderName;
             }
@@ -77,12 +83,12 @@ namespace IcerSystem.FileArrange
             {
                 newDir = parentDir.CreateSubdirectory(commonStr);
             }
+
             foreach (FileSystemInfo item in lst)
             {
                 var newPath = newDir.FullName + "\\" + item.Name;
                 MoveToPath(item, newPath);
             }
-            return "OK: 完成";
         }
 
         private static void MoveToPath(FileSystemInfo item, string newPath)
