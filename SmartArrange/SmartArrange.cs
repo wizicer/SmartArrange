@@ -22,21 +22,20 @@
 
         internal void Arrange(string[] fileNames)
         {
-            List<FileSystemInfo> lst = new List<FileSystemInfo>();
-            DirectoryInfo parentDir = null;
-            for (int i = 0; i < fileNames.Length; i++)
+            List<FileSystemInfoBase> lst = new List<FileSystemInfoBase>();
+            DirectoryInfoBase parentDir = null;
+            foreach (var filename in fileNames)
             {
-                var filename = fileNames[i];
-                DirectoryInfo tmpParentDir = null;
+                DirectoryInfoBase tmpParentDir = null;
                 if (this.fileSystem.File.Exists(filename))
                 {
-                    FileInfo fi = new FileInfo(filename);
+                    var fi = fileSystem.FileInfo.FromFileName(filename);
                     lst.Add(fi);
                     tmpParentDir = fi.Directory;
                 }
                 else if (this.fileSystem.Directory.Exists(filename))
                 {
-                    DirectoryInfo di = new DirectoryInfo(filename);
+                    var di = fileSystem.DirectoryInfo.FromDirectoryName(filename);
                     lst.Add(di);
                     tmpParentDir = di.Parent;
                 }
@@ -68,14 +67,15 @@
                 commonStr = newFolderName;
             }
 
-            DirectoryInfo newDir;
-            var sameNameFSI = lst.Where(fsi => fsi.Name == commonStr).SingleOrDefault();
+            DirectoryInfoBase newDir;
+            var sameNameFSI = lst.SingleOrDefault(fsi => fsi.Name == commonStr);
             if (sameNameFSI != null)
             {
                 var pathName = sameNameFSI.FullName;
                 if (pathName.EndsWith("\\")) pathName = pathName.Remove(pathName.Length - 1);
                 MoveToPath(sameNameFSI, pathName + ".HGYYFGHFDC");
                 newDir = parentDir.CreateSubdirectory(commonStr);
+                //newDir = fileSystem.Directory.CreateDirectory(Path.Combine(parentDir.FullName, commonStr));
                 MoveToPath(sameNameFSI, newDir.FullName + "\\" + commonStr);
                 lst.Remove(sameNameFSI);
             }
@@ -84,24 +84,26 @@
                 newDir = parentDir.CreateSubdirectory(commonStr);
             }
 
-            foreach (FileSystemInfo item in lst)
+            foreach (FileSystemInfoBase item in lst)
             {
                 var newPath = newDir.FullName + "\\" + item.Name;
                 MoveToPath(item, newPath);
             }
         }
 
-        private static void MoveToPath(FileSystemInfo item, string newPath)
+        private static void MoveToPath(FileSystemInfoBase item, string newPath)
         {
-            if (item is DirectoryInfo)
+            if (item is DirectoryInfoBase)
             {
-                DirectoryInfo di = item as DirectoryInfo;
+                var di = item as DirectoryInfoBase;
                 di.MoveTo(newPath);
+                //fileSystem.Directory.Move(di.FullName, newPath);
             }
-            else if (item is FileInfo)
+            else if (item is FileInfoBase)
             {
-                FileInfo fi = item as FileInfo;
+                var fi = item as FileInfoBase;
                 fi.MoveTo(newPath);
+                //fileSystem.File.Move(fi.FullName, newPath);
             }
         }
     }
