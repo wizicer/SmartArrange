@@ -65,6 +65,12 @@
       <DependentUpon>ArrangeTest.feature</DependentUpon>
     </Compile>
     <Compile Include="ArrangeTestSteps.cs" />
+    <Compile Include="CommonStringTest.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommonStringTest.feature</DependentUpon>
+    </Compile>
+    <Compile Include="CommonStringTestSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +78,10 @@
     <None Include="ArrangeTest.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ArrangeTest.feature.cs</LastGenOutput>
+    </None>
+    <None Include="CommonStringTest.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CommonStringTest.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>

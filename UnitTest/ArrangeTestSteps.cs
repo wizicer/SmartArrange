@@ -1,22 +1,17 @@
-﻿
-namespace UnitTest
+﻿namespace UnitTest
 {
     using System;
+    using System.Collections.Generic;
+    using System.IO.Abstractions.TestingHelpers;
     using System.Linq;
     using IcerSystem.FileArrange;
     using NUnit.Framework;
-    using System.Collections.Generic;
-    using System.IO.Abstractions.TestingHelpers;
     using TechTalk.SpecFlow;
     using TechTalk.SpecFlow.Assist;
 
     [Binding]
     public class ArrangeTestSteps
     {
-        public class FileTable
-        {
-            public string Filename { get; set; }
-        }
         [Given(@"I have following files in the file system")]
         public static void GivenIHaveFollowingFilesInTheFileSystem(Table table)
         {
@@ -42,13 +37,6 @@ namespace UnitTest
             sa.Arrange(files.Select(_ => _.Filename).ToArray());
         }
 
-        //[Then(@"the result should be `(.*)`")]
-        //public static void ThenTheResultShouldBe(string path)
-        //{
-        //    var output = ScenarioContext.Current.Get<string>("ArrangeResult");
-        //    Assert.AreEqual(path, output);
-        //}
-
         [Then(@"the result should be")]
         public static void ThenTheResultShouldBe(Table table)
         {
@@ -60,5 +48,9 @@ namespace UnitTest
             CollectionAssert.AreEquivalent(expectFiles, files);
         }
 
+        private class FileTable
+        {
+            public string Filename { get; set; }
+        }
     }
 }

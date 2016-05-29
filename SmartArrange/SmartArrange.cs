@@ -8,6 +8,7 @@
 
     internal class SmartArrange
     {
+        private const string DefaultFolderName = "New Folder";
         private readonly IFileSystem fileSystem;
 
         public SmartArrange(IFileSystem fileSystem)
@@ -22,20 +23,20 @@
 
         internal void Arrange(string[] fileNames)
         {
-            List<FileSystemInfoBase> lst = new List<FileSystemInfoBase>();
+            var lst = new List<FileSystemInfoBase>();
             DirectoryInfoBase parentDir = null;
             foreach (var filename in fileNames)
             {
                 DirectoryInfoBase tmpParentDir = null;
                 if (this.fileSystem.File.Exists(filename))
                 {
-                    var fi = fileSystem.FileInfo.FromFileName(filename);
+                    var fi = this.fileSystem.FileInfo.FromFileName(filename);
                     lst.Add(fi);
                     tmpParentDir = fi.Directory;
                 }
                 else if (this.fileSystem.Directory.Exists(filename))
                 {
-                    var di = fileSystem.DirectoryInfo.FromDirectoryName(filename);
+                    var di = this.fileSystem.DirectoryInfo.FromDirectoryName(filename);
                     lst.Add(di);
                     tmpParentDir = di.Parent;
                 }
@@ -57,13 +58,13 @@
                 }
             }
 
-            string commonStr = CommonStringExtension.GetCommonSubstring(lst.Select(fsi => fsi.Name.Remove(fsi.Name.Length - fsi.Extension.Length)).ToArray());
+            var commonStr = CommonStringExtension.GetCommonSubstring(lst.Select(fsi => fsi.Name.Remove(fsi.Name.Length - fsi.Extension.Length)).ToArray());
             if (string.IsNullOrEmpty(commonStr))
             {
-                string newFolderName = "New Folder";
+                var newFolderName = DefaultFolderName;
                 var count = 0;
                 while (this.fileSystem.Directory.Exists(parentDir.FullName + "\\" + newFolderName))
-                    newFolderName = "New Folder" + (count++).ToString();
+                    newFolderName = DefaultFolderName + (count++).ToString();
                 commonStr = newFolderName;
             }
 
@@ -75,7 +76,6 @@
                 if (pathName.EndsWith("\\")) pathName = pathName.Remove(pathName.Length - 1);
                 MoveToPath(sameNameFSI, pathName + ".HGYYFGHFDC");
                 newDir = parentDir.CreateSubdirectory(commonStr);
-                //newDir = fileSystem.Directory.CreateDirectory(Path.Combine(parentDir.FullName, commonStr));
                 MoveToPath(sameNameFSI, newDir.FullName + "\\" + commonStr);
                 lst.Remove(sameNameFSI);
             }
@@ -84,7 +84,7 @@
                 newDir = parentDir.CreateSubdirectory(commonStr);
             }
 
-            foreach (FileSystemInfoBase item in lst)
+            foreach (var item in lst)
             {
                 var newPath = newDir.FullName + "\\" + item.Name;
                 MoveToPath(item, newPath);
@@ -97,13 +97,11 @@
             {
                 var di = item as DirectoryInfoBase;
                 di.MoveTo(newPath);
-                //fileSystem.Directory.Move(di.FullName, newPath);
             }
             else if (item is FileInfoBase)
             {
                 var fi = item as FileInfoBase;
                 fi.MoveTo(newPath);
-                //fileSystem.File.Move(fi.FullName, newPath);
             }
         }
     }
