@@ -123,6 +123,140 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("chinese example")]
+        public virtual void ChineseExample()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("chinese example", ((string[])(null)));
+#line 31
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Filename"});
+            table4.AddRow(new string[] {
+                        "X:\\Movies\\007系列之23 天幕杀机 Skyfall.2012.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table4.AddRow(new string[] {
+                        "X:\\Movies\\007系列之20 择日再死 Die.Another.Day.2002.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table4.AddRow(new string[] {
+                        "X:\\Movies\\007系列之19 黑日危机 The.World.Is.Not.Enough.1999.BluRay.720p.x264.AC3-WOFEI.m" +
+                            "kv"});
+            table4.AddRow(new string[] {
+                        "X:\\Movies\\007系列之22 量子危机 Quantum.Of.Solace.2008.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table4.AddRow(new string[] {
+                        "X:\\Movies\\007系列之21 皇家赌场 Casino.Royale.2006.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table4.AddRow(new string[] {
+                        "X:\\Movies\\007系列之16 杀人执照 Licence.to.Kill.1989.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table4.AddRow(new string[] {
+                        "X:\\Movies\\007系列之14 雷霆杀机 A.View.to.a.Kill.1985.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table4.AddRow(new string[] {
+                        "X:\\Movies\\007系列之13 八爪女 Octopussy.1983.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table4.AddRow(new string[] {
+                        "X:\\Movies\\007系列之15 黎明生机 The.Living.Daylights.1987.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table4.AddRow(new string[] {
+                        "X:\\Movies\\007系列之17 黄金眼 GoldenEye.1995.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table4.AddRow(new string[] {
+                        "X:\\Movies\\007系列之12 最高机密 For.Your.Eyes.Only.1981.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table4.AddRow(new string[] {
+                        "X:\\Movies\\007系列之11 太空城 Moonraker.1979.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table4.AddRow(new string[] {
+                        "X:\\Movies\\007系列之10 海底城 The.Spy.Who.Loved.Me.1977.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table4.AddRow(new string[] {
+                        "X:\\Movies\\007系列之18 明日帝国 Tomorrow.Never.Dies.1997.BluRay.720p.x264.AC3-WOFEI.mkv"});
+#line 32
+ testRunner.Given("I have following files in the file system", ((string)(null)), table4, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Filename"});
+            table5.AddRow(new string[] {
+                        "X:\\Movies\\007系列之23 天幕杀机 Skyfall.2012.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table5.AddRow(new string[] {
+                        "X:\\Movies\\007系列之20 择日再死 Die.Another.Day.2002.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table5.AddRow(new string[] {
+                        "X:\\Movies\\007系列之19 黑日危机 The.World.Is.Not.Enough.1999.BluRay.720p.x264.AC3-WOFEI.m" +
+                            "kv"});
+            table5.AddRow(new string[] {
+                        "X:\\Movies\\007系列之22 量子危机 Quantum.Of.Solace.2008.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table5.AddRow(new string[] {
+                        "X:\\Movies\\007系列之21 皇家赌场 Casino.Royale.2006.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table5.AddRow(new string[] {
+                        "X:\\Movies\\007系列之16 杀人执照 Licence.to.Kill.1989.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table5.AddRow(new string[] {
+                        "X:\\Movies\\007系列之14 雷霆杀机 A.View.to.a.Kill.1985.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table5.AddRow(new string[] {
+                        "X:\\Movies\\007系列之13 八爪女 Octopussy.1983.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table5.AddRow(new string[] {
+                        "X:\\Movies\\007系列之15 黎明生机 The.Living.Daylights.1987.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table5.AddRow(new string[] {
+                        "X:\\Movies\\007系列之17 黄金眼 GoldenEye.1995.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table5.AddRow(new string[] {
+                        "X:\\Movies\\007系列之12 最高机密 For.Your.Eyes.Only.1981.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table5.AddRow(new string[] {
+                        "X:\\Movies\\007系列之11 太空城 Moonraker.1979.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table5.AddRow(new string[] {
+                        "X:\\Movies\\007系列之10 海底城 The.Spy.Who.Loved.Me.1977.BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table5.AddRow(new string[] {
+                        "X:\\Movies\\007系列之18 明日帝国 Tomorrow.Never.Dies.1997.BluRay.720p.x264.AC3-WOFEI.mkv"});
+#line 48
+ testRunner.Given("I have following files to be arranged", ((string)(null)), table5, "Given ");
+#line 64
+ testRunner.When("I start smart arrange", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Filename"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\007系列之23 天幕杀机 Skyfall.2012.BluRay.720p.x264" +
+                            ".AC3-WOFEI.mkv"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\007系列之20 择日再死 Die.Another.Day.2002.BluRay.7" +
+                            "20p.x264.AC3-WOFEI.mkv"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\007系列之19 黑日危机 The.World.Is.Not.Enough.1999." +
+                            "BluRay.720p.x264.AC3-WOFEI.mkv"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\007系列之22 量子危机 Quantum.Of.Solace.2008.BluRay" +
+                            ".720p.x264.AC3-WOFEI.mkv"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\007系列之21 皇家赌场 Casino.Royale.2006.BluRay.720" +
+                            "p.x264.AC3-WOFEI.mkv"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\007系列之16 杀人执照 Licence.to.Kill.1989.BluRay.7" +
+                            "20p.x264.AC3-WOFEI.mkv"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\007系列之14 雷霆杀机 A.View.to.a.Kill.1985.BluRay." +
+                            "720p.x264.AC3-WOFEI.mkv"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\007系列之13 八爪女 Octopussy.1983.BluRay.720p.x26" +
+                            "4.AC3-WOFEI.mkv"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\007系列之15 黎明生机 The.Living.Daylights.1987.Blu" +
+                            "Ray.720p.x264.AC3-WOFEI.mkv"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\007系列之17 黄金眼 GoldenEye.1995.BluRay.720p.x26" +
+                            "4.AC3-WOFEI.mkv"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\007系列之12 最高机密 For.Your.Eyes.Only.1981.BluRa" +
+                            "y.720p.x264.AC3-WOFEI.mkv"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\007系列之11 太空城 Moonraker.1979.BluRay.720p.x26" +
+                            "4.AC3-WOFEI.mkv"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\007系列之10 海底城 The.Spy.Who.Loved.Me.1977.BluR" +
+                            "ay.720p.x264.AC3-WOFEI.mkv"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\007系列之18 明日帝国 Tomorrow.Never.Dies.1997.BluR" +
+                            "ay.720p.x264.AC3-WOFEI.mkv"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\.BluRay.720p.x264.AC3-WOFEI\\"});
+            table6.AddRow(new string[] {
+                        "X:\\Movies\\"});
+            table6.AddRow(new string[] {
+                        "X:\\"});
+#line 65
+ testRunner.Then("the result should be", ((string)(null)), table6, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
